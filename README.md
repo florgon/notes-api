@@ -1,0 +1,1 @@
+Please see `notes-web` for API for now. Later migration to this repo will finished, and API will be removed from `notes-web` to `notes-api`
