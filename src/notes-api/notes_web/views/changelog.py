@@ -12,7 +12,7 @@ def get_api_changelog(_):
         ],
         "1.2.2": [
             "Add VK auth service (`/api/auth/service/vk`).",
-            "`/api/auht/token/resolve` now returns services field which may be used for showing current service connectivity status"
+            "`/api/auth/token/resolve` now returns services field which may be used for showing current service connectivity status"
         ],
         "1.1.2": [
             "Add `/api/changelog` method."
