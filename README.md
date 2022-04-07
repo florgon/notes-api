@@ -1,4 +1,4 @@
-# Notes website.
+# Notes API.
 This repository contains REST Notes API.
 Website built using Django, Django-REST, PostgreSQL, Docker.
 
