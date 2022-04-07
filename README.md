@@ -1,1 +1,11 @@
-Please see `notes-web` for API for now. Later migration to this repo will finished, and API will be removed from `notes-web` to `notes-api`
+# Notes website.
+This repository contains REST Notes API.
+Website built using Django, Django-REST, PostgreSQL, Docker.
+
+## Related.
+- [Notes Web](https://github.com/florgon/notes-web).
+- [Notes Mobile](https://github.com/florgon/notes-mobile).
+- [Notes API (This)](https://github.com/florgon/notes-api).
+
+### Documentation
+In progress...
