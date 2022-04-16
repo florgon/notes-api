@@ -28,11 +28,6 @@ DEBUG = (DEBUG == "1" or DEBUG == "true")
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split() or "*"
 FRONTEND_DOMAIN = os.environ.get("FRONTEND_DOMAIN") or "http://localhost:3000"
 
-# Auth service logic.
-AUTH_SERVICE_VK_CLIENT_ID = os.environ.get("VK_CLIENT_ID")
-AUTH_SERVICE_VK_CLIENT_SECRET = os.environ.get("VK_CLIENT_SECRET")
-AUTH_SERVICE_VK_SCHEME = os.environ.get("VK_HTTP_SCHEME")
-
 # Database.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATABASES = {

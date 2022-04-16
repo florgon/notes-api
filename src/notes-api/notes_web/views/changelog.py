@@ -7,6 +7,9 @@ from web_services.api.response import api_success
 def get_api_changelog(_):
     """Returns list of all routes releated to this app APIs."""
     changelog = {
+        "1.3": [
+            "Removed external service accounts (VK).",
+        ],
         "1.2.3": [
             "Dissalowed to connect external VK account to more than 1 account. (Now there will code 6 error raised)"
         ],
