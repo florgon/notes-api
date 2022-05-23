@@ -1,53 +1,29 @@
 version: "3"
 
 volumes:
-  database_data:
+  db:
       driver: local
 
 services:
   database:
-    hostname: notes
+    image: postgres:14-alpine
+    hostname: florgon-notes-api
     restart: always
     volumes:
       - ../db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_HOST=database
-      - POSTGRES_NAME=notes
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    image: postgres:14-alpine
-  backend:
-    hostname: notes
+    env_file: 
+      - .database.env
+  server:
+    hostname: florgon-notes-api
     restart: always
+    env_file:
+      - .server.env
     volumes:
-      - ./notes-api:/web/notes
+      - ./notes-api:/srv/www/florgon/notes-api
     ports:
-      - "8000:8000"
-    environment:
-      - SECRET_KEY="django-insecure-_gl#873^qj90cdc27c1gkbliesm@5b9ila2xgcz_5f8+$m574w"
-      - DEBUG=true
-      - ALLOWED_HOSTS=*
-      - FRONTEND_DOMAIN=http://localhost:3000
-
-      - VK_CLIENT_ID=
-      - VK_CLIENT_SECRET=
-      - VK_HTTP_SCHEME=http
-
-      - MAIL_FROM=
-      - MAIL_HOST=
-      - MAIL_HOST_USER=
-      - MAIL_HOST_PASSWORD=
-      
-      - POSTGRES_HOST=database
-      - POSTGRES_PORT=5432
-      - POSTGRES_NAME=notes
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - "${COMPOSE_EXPOSED_PORT}:80"
     depends_on:
       - database
     links:
       - database
     build: .
-    command: sh -c "gunicorn --bind 0.0.0.0:8000 notes_web.wsgi"
-    # Native server:
-    # command: python manage.py runserver 0.0.0.0:8000
