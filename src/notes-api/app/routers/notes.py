@@ -24,6 +24,7 @@ async def method_notes_get(req: Request, workspace_id: int, db: Session = Depend
     workspace = crud.workspace.get_by_id(db, workspace_id=workspace_id)
     if workspace.owner_id != auth_data.user_id:
         return api_error(ApiErrorCode.ACCESS_DENIED, "This item is not owned by you!")
+
     notes = crud.note.get_by_workspace_id(db, workspace_id=workspace_id)
     return api_success({
         "workspace_id": workspace_id,

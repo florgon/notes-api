@@ -22,6 +22,8 @@ class ApiErrorCode(Enum):
 
     USER_DEACTIVATED = 8, 403
     ACCESS_DENIED = 9, 403
+    WORKSPACE_NOT_FOUND = 10, 404,
+    NOTE_NOT_FOUND = 11, 404
 
 
 class ApiErrorException(Exception):
