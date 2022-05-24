@@ -11,6 +11,7 @@ from requests.exceptions import JSONDecodeError
 
 from app.services.permissions import Permissions, Permission, parse_permissions_from_scope
 from app.services.api.errors import ApiErrorCode, ApiErrorException
+from app.config import get_settings
 
 
 class AuthData(object):
@@ -89,7 +90,8 @@ def _check_token_with_sso_server(token: str) -> Response:
         :param token: Token to check.
     """
 
-    url = "https://api.florgon.space/secure.checkAccessToken"
+    settings = get_settings()
+    url = f"{settings.sso_api_url}/{settings.sso_api_method}"
     params = {"token": token}
     
     try:
