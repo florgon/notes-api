@@ -23,6 +23,7 @@ class ApiErrorCode(Enum):
     USER_DEACTIVATED = 8, 403
     ACCESS_DENIED = 9, 403
 
+
 class ApiErrorException(Exception):
     def __init__(self, api_code: ApiErrorCode, message: str="", data: dict | None = None):
         self.api_code = api_code
